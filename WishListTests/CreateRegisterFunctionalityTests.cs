@@ -170,7 +170,7 @@ namespace WishListTests
             registerViewModel.GetProperty("Password").SetValue(model, "success");
             registerViewModel.GetProperty("ConfirmPassword").SetValue(model, "success");
             var goodModelResults = method.Invoke(controller, new object[] { model }) as RedirectToActionResult;
-            Assert.True(goodModelResults != null && goodModelResults.ControllerName == "Home" && goodModelResults.ActionName == "Index", "`AccountController`'s Post `Register` method did not return a `RedirectToAction` to the `HomeController.Index` action.");
+            Assert.True(goodModelResults != null && goodModelResults.ControllerName == "Account" && goodModelResults.ActionName == "Login", "`AccountController`'s Post `Register` method did not return a `RedirectToAction` to the `AccountController.Login` action.");
         }
 
         [Fact(DisplayName = "Add ModelState Check To HttpPost Register Action @add-modelstate-check-to-httppost-register-action")]
@@ -224,7 +224,7 @@ namespace WishListTests
             registerViewModel.GetProperty("Password").SetValue(model, "success");
             registerViewModel.GetProperty("ConfirmPassword").SetValue(model, "success");
             var goodModelResults = method.Invoke(controller, new object[] { model }) as RedirectToActionResult;
-            Assert.True(goodModelResults != null && goodModelResults.ControllerName == "Home" && goodModelResults.ActionName == "Index", "`AccountController`'s Post `Register` method did not return a `RedirectToAction` to the `Home.Index` action when a valid model was submitted.");
+            Assert.True(goodModelResults != null && goodModelResults.ControllerName == "Account" && goodModelResults.ActionName == "Login", "`AccountController`'s Post `Register` method did not return a `RedirectToAction` to the `Account.Login` action when a valid model was submitted.");
         }
 
         [Fact(DisplayName = "Call CreateAsync In HttpPost Register Action @call-creatasync-in-httppost-register-action")]
@@ -286,7 +286,7 @@ namespace WishListTests
             {
                 Assert.True(false, "`AccountController`'s Post `Register` action did not create a new user when the model was valid.");
             }
-            Assert.True(goodModelResults != null && goodModelResults.ControllerName == "Home" && goodModelResults.ActionName == "Index", "`AccountController`'s Post `Register` method did not return a `RedirectToAction` to the `Home.Index` action when a valid model was submitted.");
+            Assert.True(goodModelResults != null && goodModelResults.ControllerName == "Account" && goodModelResults.ActionName == "Login", "`AccountController`'s Post `Register` method did not return a `RedirectToAction` to the `Account.Login` action when a valid model was submitted.");
         }
 
         [Fact(DisplayName = "Check CreateAsync Result HttpPost Register Action @check-creatasync-result-httppost-register-action")]
@@ -354,7 +354,7 @@ namespace WishListTests
             {
                 Assert.True(false, "`AccountController`'s Post `Register` action did not create a new user when the model was valid.");
             }
-            Assert.True(goodModelResults != null && goodModelResults.ControllerName == "Home" && goodModelResults.ActionName == "Index", "`AccountController`'s Post `Register` method did not return a `RedirectToAction` to the `Home.Index` action when a valid model was submitted.");
+            Assert.True(goodModelResults != null && goodModelResults.ControllerName == "Account" && goodModelResults.ActionName == "Login", "`AccountController`'s Post `Register` method did not return a `RedirectToAction` to the `Account.Login` action when a valid model was submitted.");
         }
     }
 }

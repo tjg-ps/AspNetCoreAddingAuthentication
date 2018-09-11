@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -22,8 +23,13 @@ namespace WishList.Controllers
         public IActionResult Index()
         {
             var user = _userManager.GetUserAsync(HttpContext.User).Result;
-            var model = _context.Items.Where(x => x.User.Id == user.Id).ToList();
 
+            if (user == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+  
+            var model = _context.Items.Where(x => x.User.Id == user.Id).ToList();
             return View("Index", model);
         }
 

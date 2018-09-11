@@ -54,7 +54,7 @@ namespace WishList.Controllers
                 return View(model);
             }
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Account");
         }
 
         [HttpPost]
@@ -73,6 +73,13 @@ namespace WishList.Controllers
             }
 
             return RedirectToAction("Index", "Item");
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult Login()
+        {
+            return View();
         }
 
         [HttpPost]

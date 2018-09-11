@@ -1,12 +1,27 @@
-﻿@model List<WishList.Models.Item>
+﻿@using Microsoft.AspNetCore.Identity
+@using WishList.Models
+@model List<WishList.Models.Item>
+@inject SignInManager<ApplicationUser> SignInManager
 
 <h1>Wishlist</h1>
-
+@if (SignInManager.IsSignedIn(User))
+{ 
 <a asp-action="create">Add item</a>
-
-<ul>
-    @foreach(var item in Model)
-    {
-        <li>@item.Description <a asp-action="delete" asp-route-id="@item.Id">delete</a></li>
-    }
-</ul>
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li>@item.Description <a asp-action="delete" asp-route-id="@item.Id">delete</a></li>
+        }
+    </ul>
+    <div>
+        <form asp-action="Logout" asp-controller="Account" method="post">
+            <button type="submit">Logout</button>
+        </form>
+    </div>
+}
+else
+{
+    <div>
+        <a asp-action="Login" asp-controller="Account" >Log in</a>
+    </div>
+}
